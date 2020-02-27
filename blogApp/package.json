@@ -1,0 +1,95 @@
+{
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+        "start": "expo start",
+        "android": "expo start --android",
+        "ios": "expo start --ios",
+        "web": "expo start --web",
+        "eject": "expo eject"
+    },
+    "dependencies": {
+        "axios": "^0.19.2",
+        "expo": "~36.0.0",
+        "expo-asset": "^8.0.0",
+        "expo-font": "^8.0.0",
+        "immutable": "^4.0.0-rc.12",
+        "native-base": "^2.13.8",
+        "prop-types": "^15.7.2",
+        "react": "~16.9.0",
+        "react-dom": "~16.9.0",
+        "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+        "react-native-web": "~0.11.7",
+        "react-redux": "^7.2.0",
+        "react-router-native": "^5.1.2",
+        "recompose": "^0.30.0",
+        "redux": "^4.0.5",
+        "redux-actions": "^2.6.5",
+        "redux-pender": "^2.0.12"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.0.0",
+        "babel-cli": "^6.26.0",
+        "babel-eslint": "^10.1.0",
+        "babel-preset-expo": "~8.0.0",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb": "^18.0.1",
+        "eslint-plugin-import": "^2.20.1",
+        "eslint-plugin-json": "^2.1.0",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-react": "^7.18.3"
+    },
+    "eslintConfig": {
+        "parser": "babel-eslint",
+        "extends": [
+            "airbnb"
+        ],
+        "plugins": [
+            "react",
+            "jsx-a11y",
+            "import"
+        ],
+        "parserOptions": {
+            "ecmaVersion": 2016,
+            "sourceType": "module"
+        },
+        "env": {
+            "es6": true,
+            "browser": true,
+            "node": true
+        },
+        "rules": {
+            "linebreak-style": 0,
+            "quotes": [
+                "error",
+                "double",
+                {
+                    "avoidEscape": true
+                }
+            ],
+            "indent": [
+                "error",
+                2
+            ],
+            "react/jsx-indent": [
+                "error",
+                2
+            ],
+            "react/jsx-indent-props": [
+                "error",
+                2
+            ],
+            "react/prefer-stateless-function": 0,
+            "react/jsx-one-expression-per-line": 0,
+            "react/jsx-filename-extension": [
+                1,
+                {
+                    "extensions": [
+                        ".js",
+                        ".jsx"
+                    ]
+                }
+            ]
+        }
+    },
+    "private": true
+}
