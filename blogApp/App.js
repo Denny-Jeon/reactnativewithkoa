@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AppLoading } from "expo";
-import { Provider } from "react-redux";
-import { Container } from "native-base";
-import Routes from "./app/Routes";
-import store from "./app/store";
-import { loadAssets } from "./app/utils";
+import RootNavigator from "./src/navigator";
+import { loadAssets } from "./src/utils";
 
 const App = () => {
   const [assetLoaded, setAssetLoaded] = useState(false);
@@ -22,11 +19,7 @@ const App = () => {
     !assetLoaded ? (
       <AppLoading />
     ) : (
-      <Container>
-        <Provider store={store}>
-          <Routes />
-        </Provider>
-      </Container>
+      <RootNavigator />
     )
   );
 };
