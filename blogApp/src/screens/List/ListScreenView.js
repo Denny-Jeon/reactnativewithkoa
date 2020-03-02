@@ -1,14 +1,14 @@
 import React from "react";
 import {
-  Text, View,
-  // Image, TouchableOpacity, ScrollView, Button,
+  Text, View, TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-// import { CustomHeader } from "../../navigator";
+import PropTypes from "prop-types";
+import { CustomHeader } from "../../components";
 
-const ListScreenView = () => (
+const ListScreenView = ({ navigation }) => (
   <SafeAreaView style={{ flex: 1 }}>
-    {/* <CustomHeader title="Home" isHome navigation={navigation} /> */}
+    <CustomHeader title="글목록" isHome navigation={navigation} />
     <View style={{
       flex: 1,
       justifyContent: "center",
@@ -16,16 +16,20 @@ const ListScreenView = () => (
     }}
     >
       <Text>List Screen!</Text>
-      {/* <TouchableOpacity
-        style={{
-          marginTop: 20,
-        }}
-        onPress={() => navigation.navigate("HomeDetail")}
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate("DetailStack")}
       >
-        <Text>Go Home Detail</Text>
-      </TouchableOpacity> */}
+        <Text>글보기</Text>
+      </TouchableOpacity>
     </View>
   </SafeAreaView>
 );
+
+ListScreenView.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default ListScreenView;

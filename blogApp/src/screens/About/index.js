@@ -1,3 +1,3 @@
-import AbountScreenContainer from "./AbountScreenContainer";
+import AboutScreenContainer from "./AboutScreenContainer";
 
-export default AbountScreenContainer;
+export default AboutScreenContainer;

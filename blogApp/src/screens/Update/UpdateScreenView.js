@@ -3,12 +3,12 @@ import {
   Text, View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-// import { CustomHeader } from "../../navigator";
+import PropTypes from "prop-types";
+import { CustomHeader } from "../../components";
 
-const UpdateScreenView = () => (
-  // const DetailScreenView = ({ navigation }) => (
+const UpdateScreenView = ({ navigation }) => (
   <SafeAreaView style={{ flex: 1 }}>
-    {/* <CustomHeader title="Home Detail" navigation={navigation} /> */}
+    <CustomHeader title="글수정" navigation={navigation} />
     <View style={{
       flex: 1,
       justifyContent: "center",
@@ -19,5 +19,11 @@ const UpdateScreenView = () => (
     </View>
   </SafeAreaView>
 );
+
+UpdateScreenView.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default UpdateScreenView;

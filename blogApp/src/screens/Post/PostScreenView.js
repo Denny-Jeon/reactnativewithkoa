@@ -3,11 +3,12 @@ import {
   Text, View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-// import { CustomHeader } from "../../navigator";
+import PropTypes from "prop-types";
+import { CustomHeader } from "../../components";
 
-const PostScreenView = () => (
+const PostScreenView = ({ navigation }) => (
   <SafeAreaView style={{ flex: 1 }}>
-    {/* <CustomHeader title="Setting" isHome navigation={navigation} /> */}
+    <CustomHeader title="글쓰기" isHome navigation={navigation} />
     <View style={{
       flex: 1,
       justifyContent: "center",
@@ -15,17 +16,13 @@ const PostScreenView = () => (
     }}
     >
       <Text>Post Screen!</Text>
-
-      {/* <TouchableOpacity
-        style={{
-          marginTop: 20,
-        }}
-        onPress={() => navigation.navigate("SettingDetail")}
-      >
-        <Text>Go Setting Detail</Text>
-      </TouchableOpacity> */}
     </View>
   </SafeAreaView>
 );
+
+PostScreenView.propTypes = {
+  navigation: PropTypes.shape({
+  }).isRequired,
+};
 
 export default PostScreenView;

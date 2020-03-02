@@ -3,12 +3,12 @@ import {
   Text, View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-// import { CustomHeader } from "../../navigator";
+import PropTypes from "prop-types";
+import { CustomHeader } from "../../components";
 
-const SearchScreenView = () => (
-  // const DetailScreenView = ({ navigation }) => (
+const SearchScreenView = ({ navigation }) => (
   <SafeAreaView style={{ flex: 1 }}>
-    {/* <CustomHeader title="Home Detail" navigation={navigation} /> */}
+    <CustomHeader title="검색" navigation={navigation} />
     <View style={{
       flex: 1,
       justifyContent: "center",
@@ -19,5 +19,11 @@ const SearchScreenView = () => (
     </View>
   </SafeAreaView>
 );
+
+SearchScreenView.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default SearchScreenView;
