@@ -1,5 +1,8 @@
 import Axios from "axios";
-import { RemoteHost } from "../utils";
+
+Axios.defaults.baseURL = "http://172.30.1.40:3002";
 
 // eslint-disable-next-line
-export const search = (param) => Axios.get(`${RemoteHost}/api/app/v1/blog?${param}`);
+export const search = (param) => Axios.get(`/api/app/v1/blog?${param}`);
+
+export default Axios;

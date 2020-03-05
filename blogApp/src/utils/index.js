@@ -1,8 +1,7 @@
 import loadAssets from "./loadAssets";
-
-const RemoteHost = "http://172.30.1.40:3002";
+import getDescription from "./getDescription";
 
 export {
   loadAssets,
-  RemoteHost,
+  getDescription,
 };

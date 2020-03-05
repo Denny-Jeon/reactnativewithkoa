@@ -6,6 +6,7 @@ import {
   Content, Card, CardItem, Body, Left, Right, Container, Picker,
 } from "native-base";
 import HTMLView from "react-native-htmlview";
+
 import { CustomHeader } from "../../components";
 
 const styles = StyleSheet.create({

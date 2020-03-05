@@ -1,10 +1,9 @@
 import {
   compose, lifecycle, withState, withHandlers,
 } from "recompose";
-import Axios from "axios";
 import { Alert } from "react-native";
+import Axios from "../../remote";
 import DetailScreenView from "./DetailScreenView";
-import { RemoteHost } from "../../utils";
 import { withBlog } from "../../components";
 
 export default compose(
@@ -59,7 +58,7 @@ export default compose(
     async componentDidMount() {
       const { navigation, setData, route } = this.props;
       try {
-        const response = await Axios.get(`${RemoteHost}/api/app/v1/blog/${route.params.id}`);
+        const response = await Axios.get(`/api/app/v1/blog/${route.params.id}`);
         if (response.status === 200) {
           setData(response.data);
         }
