@@ -9,6 +9,7 @@ export default compose(
     (state) => ({
       blogData: state.blog.get("data").toJS(),
       blogPaging: state.blog.get("paging").toJS(),
+      blogItem: state.blog.get("item").toJS(),
       blogSearch: state.blog.get("search"),
     }),
     (dispatch) => ({

@@ -8,41 +8,39 @@ import { withBlog } from "../../components";
 
 export default compose(
   withBlog,
-  withState("data", "setData", {
-    id: -1,
-    title: "",
-    content: "",
-    createdAt: "",
-  }),
+  withState("loading", "setLoading", true),
   withState("selected", "setSelected", ""),
   withHandlers({
     removeContent: (props) => async () => {
-      // const {
-      //   blogAction, blogData, blogPaging, data, navigation,
-      // } = props;
-      // try {
-      //   const response = await Axios.delete(`${RemoteHost}/api/app/v1/blog/${data.id}`);
-      //   if (response.status === 204) {
-      //     const newPaging = resetPaging(blogData.total, blogData.items, blogPaging);
-      //     await blogAction.setPaging(newPaging);
-      //     navigation.navigate("List");
-      //   }
-      // } catch (err) {
-      //   navigation.navigate("List");
-      // }
+      const {
+        blogAction, blogSearch, blogPaging, route, navigation,
+      } = props;
+      try {
+        const response = await Axios.delete(`/api/app/v1/blog/${route.params.id}`);
+        if (response.status === 204) {
+          await blogAction.deleteItem({ id: route.params.id });
+          const params = `search=${blogSearch}&offset=${blogPaging.offset + blogPaging.size - 1}&size=1`;
+          await blogAction.searchNAppend(params);
+          navigation.navigate("List");
+        }
+      } catch (err) {
+        navigation.navigate("List");
+      }
     },
+  }),
+  withHandlers({
     onValueChange: (props) => (itemValue) => {
-      const { navigation, data } = props;
+      const { navigation, blogItem, removeContent } = props;
 
       if (itemValue === "Update") {
-        navigation.navigate("Update", { id: data.id });
+        navigation.navigate("Update", { id: blogItem.id });
         return;
       } if (itemValue === "Delete") {
         Alert.alert(
           "글삭제 확인",
-          `${data.title}를 삭제하시겠습니까?`,
+          `${blogItem.title}를 삭제하시겠습니까?`,
           [
-            { text: "삭제", onPress: () => console.log("OK Pressed") },
+            { text: "삭제", onPress: () => removeContent() },
             {
               text: "취소",
               style: "cancel",
@@ -56,13 +54,15 @@ export default compose(
   }),
   lifecycle({
     async componentDidMount() {
-      const { navigation, setData, route } = this.props;
+      const {
+        navigation, route, blogAction, setLoading,
+      } = this.props;
       try {
-        const response = await Axios.get(`/api/app/v1/blog/${route.params.id}`);
-        if (response.status === 200) {
-          setData(response.data);
-        }
+        console.log("componentDidMount");
+        await blogAction.getItem(route.params.id);
+        setLoading(false);
       } catch (err) {
+        setLoading(false);
         navigation.navigate("List");
       }
     },
