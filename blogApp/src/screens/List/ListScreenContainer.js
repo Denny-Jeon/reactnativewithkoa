@@ -60,8 +60,11 @@ export default compose(
       await actionList(0, parseInt(e.target.value, 10));
     },
     refreshContent: (props) => async () => {
-      const { blogPaging, clearList, actionList } = props;
-      await clearList();
+      const {
+        blogPaging, actionList, blogAction,
+      } = props;
+      await blogAction.setSearch("");
+      await blogAction.clear();
       await actionList(0, blogPaging.size);
     },
   }),
@@ -70,14 +73,14 @@ export default compose(
       const { searchList } = this.props;
       await searchList();
     },
-    async componentDidUpdate(prevProps) {
-      const { blogSearch, searchList } = this.props;
-      if (blogSearch !== prevProps.blogSearch) {
-        await searchList();
-        return true;
-      }
+    // async componentDidUpdate(prevProps) {
+    //   const { blogSearch, searchList } = this.props;
+    //   // if (blogSearch !== prevProps.blogSearch) {
+    //   //   await searchList();
+    //   //   return true;
+    //   // }
 
-      return false;
-    },
+    //   return false;
+    // },
   }),
 )(ListScreenView);
